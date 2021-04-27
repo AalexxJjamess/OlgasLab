@@ -1,6 +1,7 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 
 \usepackage{amsmath}
+\usepackage{siunitx}
 
 \title{Measuring Modes on Strings: Part 1}
 \author{Alex Booth}
@@ -9,9 +10,42 @@
     \maketitle
 
     \section{Introduction}
+        This report details an investigation into the phenomena observed on a vibrating string.
+        Several experiments took place, using a guitar, as guitars feature strings under tension that can freely vibrate.
+        The frequency and amplitude of vibrations can be easily and precisely adjusted on a well-intonated guitar by fretting the strings along the fingerboard.
+        Results are tabulated and plotted on graphs using MATLAB. 
     
-    \section{Discussion}
+    \section{Theory}
+        A string vibrates with a fundamental, or in music theory tonic, frequency.
+        This fundamental frequency is related to the length $L$ of a vibrating string:
+        \begin{equation}
+            f_1 = \frac{c}{2 L}
+        \end{equation}
+        The mass of a string and its length can be used to find a mass per unit length $M$.
+        This mass per unit length can then be formulated with it's tension $T$ to find the speed of a transverse wave on a string:
+        \begin{equation}\label{speed}
+            c = \sqrt{\frac{T}{M}}
+        \end{equation}
+        Equation \ref{speed} allows us to formulate:
+        \begin{equation}
+            f_1 = \frac{\sqrt{\frac{T}{M}}}{2 L}
+        \end{equation}
+        If the ends of a string under tension are fixed, the fundamental frequency will have a wavelength equal to half the string's length.
+        The frequencies of higher harmonics of the fundamental frequency are integer multiples of the fundamental frequency:
+        \begin{equation}\label{harm}
+            f_n = \frac{c}{2 L} n
+        \end{equation}
 
-    \section{Results}
+    \section{Experiment One}
+        \subsection{Methodology}
+            In experiment one, the relationship between resonant frequency and string length were investigated.
+            Preliminary measurements of mass and length were taken in order to find a mass per unit length $M = 0.012618\si{\kilogram\per\meter}$.
+            Then the low E string was played in an open position, thus at it's maximum string length and at a frequency of $83\si{\hertz}$.
+            Using equation \ref{harm} the higher harmonics $n = 1, 2 ,3 ...$ are predicted for the vibrating open E string.
+            The sound of the vibrating string was captured using a microphone and passed into a Simulink frequency spectrum analyser.
+            From this spectrum analyser the frequencies of the fundamental tone and it's higher harmonics could be ascertained.
+            
+
+
 
 \end{document}
