@@ -44,8 +44,19 @@
             Using equation \ref{harm} the higher harmonics $n = 1, 2 ,3 ...$ are predicted for the vibrating open E string.
             The sound of the vibrating string was captured using a microphone and passed into a Simulink frequency spectrum analyser.
             From this spectrum analyser the frequencies of the fundamental tone and it's higher harmonics could be ascertained.
+            However, not every frequency in the harmonic series had a sufficient amplitude to be declared a peak by the Simulink spectrometer, meaning that the recorded harmonic series will have gaps compared to the array of predicted harmonic frequencies.
+            Rearranging equation \ref{harm} allowed a wave speed $c_n$ to be found for each harmonic number, for both the predicted and recorded harmonics.
+            To compare the error between the predicted and observed harmonic wave speeds, a mean wave speed was taken for the observed values.
+            The difference between this mean wave speed $c$ and each predicted harmonic wave speed $c_n$ was then taken.
+            These differences were then summed and divided by the number of harmonics to give a mean difference and thus average error:
+            \begin{equation}
+                \Delta c = \frac{1}{N}\sum_{n=1}^{N} | c_n - c |
+            \end{equation}
+            The array of predicted wave speeds for harmonic numbers up to harmonic number $n=6$ were tabluated:
             
 
+           
 
+        
 
 \end{document}
