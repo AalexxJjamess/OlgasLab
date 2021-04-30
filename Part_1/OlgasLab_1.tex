@@ -16,6 +16,8 @@
 \title{Measuring Modes on Strings: Part 1}
 \author{Alex Booth}
 
+\bibliographystyle{plain}
+
 
 
 \begin{document}
@@ -28,6 +30,9 @@
         Results are tabulated and plotted on graphs using MATLAB. 
     
     \section{Theory}
+        Strings held under tension by two boundary conditions can facilitate standing waves.
+        A standing wave is a wave travelling through a medium, in this case the string, oscillating in time.
+        However, due to the distance between the boundary conditions being an integer multiple of the incident wavelength, after reflecting when reaching the boundary conditions of the medium, it appears to not oscillate in time, due to the constructive or destructive interference of the incident and reflected wave \cite{STWAVES20, PHYS15}.
         A string vibrates with a fundamental, or in music theory tonic, frequency.
         This fundamental frequency is related to the length $L$ of a vibrating string:
         \begin{equation}
@@ -76,7 +81,7 @@
                 \end{tabular}
                 \caption{Predicted wave speeds for each harmonic}
             \end{table}
-            The average error $\Delta c$ was calculated: $\Delta c = 30.812$.
+            The average error $\Delta c$ was calculated: $\Delta c = 3.4$.
             Next, the guitar string was plucked whilst fretted on the fingerboard.
             The fundamental frequency for the fretted note (A - the 5\textsuperscript{th} fret on the E string) was predicted to be $f=110\si{\hertz}$ using equations \ref{speed} and \ref{harm}.
             The recorded frequency was found to be $f=112\si{\hertz}$.
@@ -103,27 +108,35 @@
             \end{figure}
         \subsection{Discussion of Results}
             Such a high error in $c$ can be attributed to the missing harmonic frequencies from the observed series, and the frequency response of the microphone used to capture the sound "colouring" the signal.
-            In Fig.\ref{f1vs1} the predicted and measured frequency dependence on string length follow each other closely, adopting a similar pattern.
+            In Fig.\ref{f1vsl} the predicted and measured frequency dependence on string length follow each other closely, adopting a similar pattern.
             The resolution of the measured results was much lower than the predicted results, and this is clearly visible on the graph.
             This resolution can be improved by collecting a larger data set, by recording the fundamental frequency of every fret along the fingerboard.
             
     \section{Experiment 2}
-        \subsection{Methodology and Results}
-            Rearranging equation \ref{speed} allows us to find a value of Tension $T$ for the open string.
-            The error of the results $\Delta T$ is depended on the error $\Delta c$. And thus the error $\Delta T$ was tabulated:
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{c | l l l l l l}
-                    \hline  
-                    $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
-                    \hline
-                    $c(\si{\meter\per\second})$ & 102.7 & 205.41 & 308.12 & 410.83 & 513.54 & 616.24 \\
-                    \hline
-                \end{tabular}
-                \caption{Error in string tension}
-            \end{table}
-            Next, the tension of the string was increased using the tuning peg.
-            Adjusting the tension increased the fundamental frequency
+        Rearranging equation \ref{speed} allows us to find a value of Tension $T$ for the open string.
+        The error of the results $\Delta T$ is depended on the error $\Delta c$. And thus the error $\Delta T$ was calculated:
+        \begin{align}
+            \frac{\Delta T}{T} & = 2 \frac{\Delta c}{c}\\
+            \Delta T & = 2 T \frac{\Delta c}{c} = 5.88
+        \end{align}
+        Rearranging equations \ref{speed}\&\ref{fund} allows to solve for tension by recording the fundamental note and mass per unit length:
+        \begin{equation}\label{tension}
+            M(f_1 2L)^2 =  T
+        \end{equation}
+        Next, the tension of the string was increased and decreased using the tuning peg, and the guitar played to record the fundamental frequency of the low E string.
+        Adjusting the tension adjusted the fundamental frequency, and using equation \ref{tension}, values of tension against frequency can be tabulated:
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c | l l l}
+                \hline
+                $f_1\si{\hertz}$ & 77.8(D\#) & 81(E) & 87.3(F) \\
+                \hline
+                Tension & 122.71 & 133.02 & 154.51 \\
+                \hline
+            \end{tabular}
+            \caption{Tension's relationship with fundamental frequency}
+        \end{table}
+        
     \section{Experiment 3}
         \subsection{Plucking Along the String}
             Plucking a string at different positions creates a different harmonic content in the radiated sound, even though the fundamental note remains the same.
@@ -132,14 +145,30 @@
             The closer to the ends under tension the string was plucked, the greater the concentration.
         \subsection{Modified System}
             When softly touching the string at the halfway point, an node of standing wave motion is created.
-            This is because the string is not being pressed down hard enough to shorten it's vibrating length to the fret, and so the plucking of the string allows both the string to vibrate from the nut to the node and the bridge to the node.
+            This is because the string is not being pressed down hard enough to shorten it's vibrating length to the fret, and so the plucking of the string allows both the string to vibrate from the nut to the node and the bridge to the node. \cite{PHYS15}
+            This is easily observable by playing with this 'harmonic' technique: the guitar string will be vibrating from the finger to both boundary conditions, instead of from the finger to the bridge when fretted normally.
             The note played when touching the string at the halfway point is the same note as the open string - E.
             However it is in a higher octave and as such at a much higher frequency - due to the shortened wavelengths.
 
     \section{Experiment 5} 
         A palm muting technique is when the player of a guitar rests part of their palm on the vibrating strings of the guitar, whilst they strum the strings.
         This technique creates a 'muted' or 'chugging' sound, rich in low-frequency harmonic content and with a lack of 'defined' high-frequency harmonic content.
-        The guitar used in the previous experiments
+        The guitar used in the previous experiments was palm muted, and the radiated sound was recorded and analysed using Simulink's spectrum analyser.
+        Comparing Fig.\ref{Epm} to Fig.\ref{Eopen}, it can be observed that the sound radiation from the palm muted low E string has a richer low frequency harmonic content.
+        The palm muted low harmonics are much higher in amplitude, and have less sharp peaks, with smaller bumps around the main amplitude spikes.
+        \begin{figure}[H]\label{Epm}
+            \centering
+            \includegraphics[scale=0.3]{resources/Epm.png}
+            \caption{Amplitude vs Frequency for the palm muted low E string}
+        \end{figure}
+        \begin{figure}[H]\label{Eopen}
+            \centering
+            \includegraphics[scale=0.3]{resources/Eopen.png}
+            \caption{Amplitude vs Frequency for the open low E string}
+        \end{figure}
         
+        
+        \bibliography{theBib}
+
 
 \end{document}
